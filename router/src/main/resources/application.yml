@@ -1,0 +1,8 @@
+# base URL
+server:
+  port: 8080
+  servlet:
+    context-path: /router
+    multipart:
+      max-file-size: 20M
+      max-request-size: 20M
