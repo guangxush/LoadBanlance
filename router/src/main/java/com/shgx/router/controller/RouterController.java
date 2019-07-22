@@ -1,5 +1,6 @@
 package com.shgx.router.controller;
 
+import com.shgx.router.services.impl.WeightSelect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,9 @@ public class RouterController {
     @Autowired
     private RestTemplateBuilder builder;
 
+    @Autowired
+    private WeightSelect randomSelect;
+
     private String url = "http://localhost:8082/server/";
 
     @RequestMapping(path = "/{services}/{info}", method = RequestMethod.GET)
@@ -25,6 +29,10 @@ public class RouterController {
                          @PathVariable("info") String info){
         RestTemplate restTemplate = builder.build();
         url += services + "/" + info;
+        url = randomSelect.select(url);
+        if(url == null){
+            return "no server";
+        }
         ResponseEntity<String> result = restTemplate.getForEntity(url, String.class);
         if(result.getStatusCode().equals(HttpStatus.OK)){
             return info;

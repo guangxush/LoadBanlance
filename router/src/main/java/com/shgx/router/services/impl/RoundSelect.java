@@ -5,19 +5,16 @@ import com.shgx.router.services.AbstractProviderSelect;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author: guangxush
  * @create: 2019/07/22
  */
-public class RandomSelect extends AbstractProviderSelect {
+public class RoundSelect extends AbstractProviderSelect {
 
-    /**
-     * 随机选取一个URL
-     * @param url
-     * @return
-     */
+    private AtomicInteger number;
+
     @Override
     public String select(String url){
         Optional<List<ProviderInfo>> infos = map.get(url);
@@ -27,8 +24,14 @@ public class RandomSelect extends AbstractProviderSelect {
                 return null;
             }
             int size = infoList.size();
-            ThreadLocalRandom random = ThreadLocalRandom.current();
-            int index = random.nextInt(size);
+            int index = 0;
+            if(number.get()>size){
+                index = 0;
+                number.set(index);
+            }else{
+                index = number.get()+1;
+                number.getAndIncrement();
+            }
             return infoList.get(index).getUrl();
         }
         return null;
