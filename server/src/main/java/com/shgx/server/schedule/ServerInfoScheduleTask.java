@@ -1,5 +1,6 @@
 package com.shgx.server.schedule;
 
+import com.shgx.common.annotation.SysLog;
 import com.shgx.common.model.ProviderInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -15,11 +16,10 @@ import org.springframework.web.client.RestTemplate;
  * @create: 2019/07/24
  */
 @Component
-@Slg4j
 public class ServerInfoScheduleTask {
 
     private static ProviderInfo providerInfo = new ProviderInfo();
-    private static final String url = "";
+    private static String url = "http://localhost:8080/router/listener/hello";
 
     @Autowired
     private RestTemplateBuilder builder;
@@ -30,14 +30,17 @@ public class ServerInfoScheduleTask {
         return providerInfo;
     }
 
-    @Scheduled(cron = "0/5 * * * * ?")
-    private void returnProviderInfo(){
+    @Scheduled(fixedRate=3000)
+    @SysLog()
+    private String returnProviderInfo(){
+        System.out.println("hello.....");
         RestTemplate restTemplate = builder.build();
+        // url+="hello";
         ResponseEntity<String> result = restTemplate.getForEntity(url, String.class);
         if(result.getStatusCode().equals(HttpStatus.OK)){
-            System.out.println();
+            return result.getBody();
         }else{
-            System.out.println();
+            return result.getStatusCode().toString();
         }
     }
 }

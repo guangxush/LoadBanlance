@@ -11,7 +11,7 @@ public class RouterApplication {
         SpringApplication.run(RouterApplication.class, args);
         SpringApplication springApplication = new SpringApplication(RouterApplication.class);
         springApplication.addListeners(new MyListener(), new MyListener());
-        springApplication.run( args);
+        //springApplication.run(args);
     }
 
 }
