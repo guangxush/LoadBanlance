@@ -31,7 +31,7 @@ public class ServerInfoScheduleTask {
     }
 
     @Scheduled(fixedRate=3000)
-    @SysLog()
+    @SysLog("provider info....")
     private String returnProviderInfo(){
         System.out.println("hello.....");
         RestTemplate restTemplate = builder.build();
