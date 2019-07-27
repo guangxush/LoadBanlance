@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationListener;
  * @create: 2019/07/23
  */
 @Slf4j
-public class MyListener implements ApplicationListener<MyApplicationEvent> {
+public class RequestListener implements ApplicationListener<MyApplicationEvent> {
     @Override
     public void onApplicationEvent(MyApplicationEvent event) {
         String msg = event.getMsg();

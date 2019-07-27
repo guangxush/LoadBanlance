@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class AbstractProviderSelect implements ProviderSelect{
 
-    protected ConcurrentHashMap<String, Optional<List<ProviderInfo>>> map = new ConcurrentHashMap<>();
+    protected static ConcurrentHashMap<String, Optional<List<ProviderInfo>>> map = new ConcurrentHashMap<>();
 
     @Override
     public boolean register(String url, Optional<List<ProviderInfo>> infos){

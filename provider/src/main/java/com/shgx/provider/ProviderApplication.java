@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@ComponentScan(value = {"com.shgx.provider.schedule","com.shgx.provider.controller"})
+@ComponentScan(value = {"com.shgx.provider.schedule","com.shgx.provider.controller","com.shgx.provider.service"})
 @EnableScheduling
 public class ProviderApplication {
 

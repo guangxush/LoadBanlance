@@ -1,7 +1,9 @@
 package com.shgx.router.controller;
 
+import com.shgx.router.services.impl.RandomSelect;
 import com.shgx.router.services.impl.WeightSelect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,8 @@ public class RouterController {
     private RestTemplateBuilder builder;
 
     @Autowired
-    private WeightSelect randomSelect;
+    @Qualifier(value = "randomSelect")
+    private RandomSelect randomSelect;
 
     private String url = "http://localhost:8082/server/";
 
@@ -28,8 +31,10 @@ public class RouterController {
     public String router(@PathVariable("services") String services,
                          @PathVariable("info") String info){
         RestTemplate restTemplate = builder.build();
+        services = randomSelect.select(services);
         url += services + "/" + info;
         url = randomSelect.select(url);
+        System.out.println(url);
         if(url == null){
             return "no server";
         }

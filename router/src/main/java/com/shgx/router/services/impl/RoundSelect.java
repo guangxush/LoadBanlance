@@ -2,6 +2,7 @@ package com.shgx.router.services.impl;
 
 import com.shgx.common.model.ProviderInfo;
 import com.shgx.router.services.AbstractProviderSelect;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author: guangxush
  * @create: 2019/07/22
  */
+@Service
 public class RoundSelect extends AbstractProviderSelect {
 
     private AtomicInteger number;

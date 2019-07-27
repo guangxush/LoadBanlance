@@ -23,7 +23,7 @@ public class WeightSelect extends AbstractProviderSelect {
             if(infoList.isEmpty()||infoList.size()==0){
                 return null;
             }
-            int weight = infoList.get(0).getWeight();
+            double weight = infoList.get(0).getWeight();
             String maxUrl = infoList.get(0).getUrl();
             for(ProviderInfo info: infoList){
                 if(info.getWeight()>weight){

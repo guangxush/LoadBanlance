@@ -1,13 +1,16 @@
 package com.shgx.common.model;
 
+import java.util.Date;
+
 /**
  * @author: guangxush
  * @create: 2019/07/22
  */
 public class ProviderInfo {
     private String url;
-    private Integer weight;
+    private Double weight;
     private Integer resources;
+    private Date date;
 
     public String getUrl() {
         return url;
@@ -17,11 +20,11 @@ public class ProviderInfo {
         this.url = url;
     }
 
-    public Integer getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
