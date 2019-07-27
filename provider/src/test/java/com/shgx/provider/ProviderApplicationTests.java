@@ -1,4 +1,4 @@
-package com.shgx.server;
+package com.shgx.provider;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class ServerApplicationTests {
+public class ProviderApplicationTests {
 
     @Test
     public void contextLoads() {

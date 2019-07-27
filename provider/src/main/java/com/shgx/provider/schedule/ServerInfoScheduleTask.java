@@ -1,13 +1,14 @@
-package com.shgx.server.schedule;
+package com.shgx.provider.schedule;
 
-import com.shgx.common.annotation.SysLog;
 import com.shgx.common.model.ProviderInfo;
+import com.shgx.provider.annotation.MyLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 
@@ -31,9 +32,8 @@ public class ServerInfoScheduleTask {
     }
 
     @Scheduled(fixedRate=3000)
-    @SysLog("provider info....")
+    @MyLog(module="ServerInfoScheduleTask", method="returnProviderInfo")
     private String returnProviderInfo(){
-        System.out.println("hello.....");
         RestTemplate restTemplate = builder.build();
         // url+="hello";
         ResponseEntity<String> result = restTemplate.getForEntity(url, String.class);

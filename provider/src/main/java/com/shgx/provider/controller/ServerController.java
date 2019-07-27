@@ -1,6 +1,5 @@
-package com.shgx.server.controller;
+package com.shgx.provider.controller;
 
-import com.shgx.common.annotation.SysLog;
 import org.springframework.web.bind.annotation.*;
 
 /**

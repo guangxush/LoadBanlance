@@ -1,4 +1,4 @@
-package com.shgx.server;
+package com.shgx.provider;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,12 +6,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@ComponentScan(value = "com.shgx.server.schedule")
+@ComponentScan(value = {"com.shgx.provider.schedule","com.shgx.provider.controller"})
 @EnableScheduling
-public class ServerApplication {
+public class ProviderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ServerApplication.class, args);
+        SpringApplication.run(ProviderApplication.class, args);
     }
 
 }
